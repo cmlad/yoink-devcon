@@ -99,7 +99,7 @@ export async function POST(request: NextRequest) {
 
   try {
     switch (payload.data.event) {
-      case "frame-added":
+      case "frame_added":
         if (payload.data.notificationDetails) {
           await setNotificationTokenForFid(
             fid,
@@ -111,12 +111,12 @@ export async function POST(request: NextRequest) {
         }
         break;
 
-      case "frame-removed":
+      case "frame_removed":
         await deleteNotificationTokenForFid(fid);
         console.log(`Removed notification token for fid ${fid}`);
         break;
 
-      case "notifications-enabled":
+      case "notifications_enabled":
         await setNotificationTokenForFid(
           fid,
           payload.data.notificationDetails.token,
@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
         );
         break;
 
-      case "notifications-disabled":
+      case "notifications_disabled":
         await deleteNotificationTokenForFid(fid);
         console.log(`Disabled notifications for fid ${fid}`);
         break;
